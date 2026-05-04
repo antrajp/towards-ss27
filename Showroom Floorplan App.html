@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toward(s) — Showroom · Paris SS27</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f1eb;--wf:#d5d0c5;--rf:#efecea;--ws:#3d3c38;
+  --tp:#1c1b18;--ts:#666360;--tt:#aaa79f;
+  --bd:rgba(28,27,24,.09);--bdm:rgba(28,27,24,.18);
+  --ct:#1a9870;--cb:#2a72c4;--cc:#bf4e26;--ca:#b87312;
+}
+html,body{height:100%;background:var(--bg);color:var(--tp);font-family:'Hiragino Kaku Gothic W3','ヒラギノ角ゴ Pro',sans-serif;font-weight:400}
+header{position:fixed;top:0;left:0;right:0;z-index:101;background:var(--bg);border-bottom:.5px solid var(--bd);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.hlogo{font-family:serif;font-size:20px;font-weight:400;letter-spacing:-.02em}
+.hmenu{display:flex;gap:2.5rem}
+.hmenu a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);text-decoration:none;transition:color .2s;font-weight:500}
+.hmenu a:hover,.hmenu a.active{color:var(--tp)}
+nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);border-bottom:.5px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:44px}
+.nav-left{display:flex;gap:2rem}
+.nav-right{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tt);font-weight:500}
+.fb{padding:9px 0;margin-right:2rem;margin-bottom:-.5px;font-family:'Hiragino Kaku Gothic W3','ヒラギノ角ゴ Pro',sans-serif;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);background:none;border:none;border-bottom:1px solid transparent;cursor:pointer;transition:color .2s,border-color .2s}
+.fb.on{color:var(--tp);border-bottom-color:var(--tp)}
+.fb:hover:not(.on){color:var(--ts)}
+.main{padding-top:104px;min-height:100vh;display:grid;grid-template-columns:1fr 360px}
+.plan{padding:2rem 2rem 4rem;display:flex;align-items:flex-start;justify-content:center;border-right:.5px solid var(--bd);min-height:calc(100vh - 104px);overflow-y:auto}
+.fv{display:none}.fv.on{display:flex;align-items:flex-start;justify-content:center}
+.z{cursor:pointer}
+.z .zf{transition:fill-opacity .15s,stroke-opacity .15s;fill-opacity:0;stroke-opacity:.3;stroke-width:1.5}
+.z:hover .zf,.z.on .zf{fill-opacity:.18!important;stroke-opacity:1!important}
+.z:hover .zl,.z.on .zl{opacity:1!important}
+.zl{opacity:.65;transition:opacity .15s;pointer-events:none}
+.info{padding:2.5rem 2rem;position:sticky;top:104px;height:calc(100vh - 104px);overflow-y:auto;display:flex;flex-direction:column}
+.info::-webkit-scrollbar{width:2px}.info::-webkit-scrollbar-thumb{background:var(--bdm)}
+.idle{flex:1;display:flex;flex-direction:column}
+.ik{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);line-height:2.4;font-weight:500}
+.ih{font-family:'Hiragino Kaku Gothic W3','ヒラギノ角ゴ Pro',sans-serif;font-size:22px;font-weight:400;color:var(--ts);line-height:1.5;margin-top:1rem}
+.ap{display:none;flex-direction:column}.ap.on{display:flex}
+.aft{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);margin-bottom:6px;font-weight:500}
+.ahed{font-family:'Hiragino Kaku Gothic W3','ヒラギノ角ゴ Pro',sans-serif;font-size:24px;font-weight:500;line-height:1.2;color:var(--tp)}
+.asub{font-size:10px;color:var(--tt);letter-spacing:.04em;margin-top:5px;margin-bottom:1.3rem}
+.div{height:.5px;background:var(--bd);margin-bottom:1.3rem}
+.ly{margin-bottom:1.3rem}
+.lh{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.ld{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ld.h{background:var(--ct)}.ld.d{background:var(--cb)}.ld.f{background:var(--cc)}.ld.o{background:var(--ca)}
+.lt{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);font-weight:500}
+.lb{font-size:11.5px;color:var(--ts);line-height:1.85;padding-left:14px}
+.leg{margin-top:auto;padding-top:1.8rem;border-top:.5px solid var(--bd)}
+.legt{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);margin-bottom:10px;font-weight:500}
+.legr{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--ts);margin-bottom:6px;font-weight:400}
+.legs{width:20px;height:2px;border-radius:1px;flex-shrink:0}
+.legs.h{background:var(--ct)}.legs.d{background:var(--cb)}.legs.f{background:var(--cc)}.legs.o{background:var(--ca)}
+.fixture{cursor:help;transition:fill-opacity .2s,stroke-opacity .2s}
+.fixture:hover{fill-opacity:.35!important;stroke-opacity:1!important}
+#fixture-tip{position:fixed;background:var(--tp);color:var(--bg);padding:8px 12px;border-radius:3px;font-size:11px;line-height:1.6;pointer-events:none;z-index:200;display:none;max-width:220px}
+#fixture-tip-title{font-weight:600;margin-bottom:3px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.img-trigger{margin-top:1.5rem;padding:10px 0;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);cursor:pointer;opacity:0;transition:opacity .3s,color .2s;border-bottom:1px solid transparent}
+.img-trigger.show{opacity:1}
+.img-trigger:hover{color:var(--tp);border-bottom-color:var(--tp)}
+.gallery-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,241,235,0.95);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.gallery-overlay.show{display:flex}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:85%;max-height:85vh;padding:3rem}
+.gallery-grid img{width:100%;height:auto;display:block;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.gallery-close{position:absolute;top:2rem;right:2rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);cursor:pointer;transition:color .2s;padding:8px 16px;border:1px solid var(--bd)}
+.gallery-close:hover{color:var(--tp);border-color:var(--tp)}
+</style>
+</head>
+<body>
+<header>
+  <div class="hlogo">toward(s) · ss27</div>
+  <div class="hmenu">
+    <a href="#" class="active">Showroom guide</a>
+    <a href="#">SOP</a>
+    <a href="#">Hospitality</a>
+  </div>
+</header>
+<nav>
+  <div class="nav-left">
+    <button class="fb on" onclick="sf('ground')">Ground floor</button>
+    <button class="fb" onclick="sf('basement')">Basement</button>
+  </div>
+  <div class="nav-right">Showroom proposal · 98 rue Quincampoix, 75003 Paris</div>
+</nav>
+<div class="main">
+<div class="plan">
+
+<!-- ===== GROUND FLOOR =====
+  Pixel-traced from polycam1.png (1915×7754px). Scale: 0.1044px/imgpx. Origin: (440,340).
+  Outer polygon (clockwise): TL(685,407) → TR(1685,407) → right wall down →
+  step in at y=3600 (right=1685→1570) → right wall of lower section →
+  bottom → left wall of lower section up → step wall at y=3865 → left wall of upper section up.
+  Interior: storage bottom at y=2100, stair box overlaid right side.
+-->
+<div class="fv on" id="vg">
+<svg width="160" height="760" viewBox="-8 0 176 760" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- OUTER WALL MASS -->
+  <polygon points="25.6,7 130,7 130,340.3 118,340.3 118,732.4 2.1,732.4 2.1,368 25.6,368 25.6,7"
+    fill="var(--wf)" stroke="var(--ws)" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- ROOM INTERIOR -->
+  <polygon points="29,11 126,11 126,336.5 114.5,336.5 114.5,728 6,728 6,372 29,372 29,11"
+    fill="var(--rf)"/>
+
+  <!-- Interior horizontal wall: bottom of storage zone -->
+  <line x1="29" y1="184" x2="126" y2="184" stroke="var(--ws)" stroke-width="1.5"/>
+
+  <!-- Interior step faces -->
+  <line x1="114.5" y1="336.5" x2="114.5" y2="372" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="6" y1="372" x2="29" y2="372" stroke="var(--ws)" stroke-width="1.5"/>
+
+  <!-- Doorway gap (far right of bottom wall) -->
+  <rect x="82" y="727" width="32" height="5" fill="var(--bg)"/>
+  <text x="98" y="748" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7" fill="var(--tt)" letter-spacing=".08em">doorway</text>
+
+  <!-- ZONE: Storage / Refreshment Prep -->
+  <g class="z" id="z-gf-storage" data-key="gf-storage" onmouseenter="hv(this)" onclick="hv(this)">
+    <rect class="zf" x="29" y="11" width="97" height="173" fill="var(--ca)" stroke="var(--ca)"/>
+    
+    <!-- Fridge hotspot (bottom left corner) -->
+    <rect class="fixture" x="32" y="160" width="18" height="20" rx="1" 
+      fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Fridge', 'Mint water, craft cola, coffee bases kept here. Ice in the freezer. Cold towels for guests.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    
+    <!-- Prep table hotspot (top centre, against wall) -->
+    <rect class="fixture" x="52" y="15" width="50" height="18" rx="1"
+      fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Prep table', 'Servingware kept here. Clean after each use.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    
+    <text class="zl" x="77" y="91" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Storage /</text>
+    <text class="zl" x="77" y="103" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Refreshment Prep</text>
+  </g>
+
+  <!-- ZONE: Open floor + staircase (below storage, above step) -->
+  <g class="z" id="z-gf-stairs" data-key="gf-stairs" onmouseenter="hv(this)" onclick="hv(this)">
+    <rect class="zf" x="29" y="184" width="97" height="152.5" fill="var(--cc)" stroke="var(--cc)"/>
+    
+    <!-- Staircase box: overlaid on right side, hoverable fixture -->
+    <rect class="fixture" x="96" y="190" width="30" height="140" rx="2"
+      fill="rgba(50,90,160,0.08)" stroke="#5580bb" stroke-width="1.2" stroke-dasharray="5,3"
+      onmouseenter="showFixture(event, 'Staircase', 'Down to basement.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    <line x1="96" y1="200" x2="126" y2="200" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="211" x2="126" y2="211" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="222" x2="126" y2="222" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="233" x2="126" y2="233" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="244" x2="126" y2="244" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="255" x2="126" y2="255" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="266" x2="126" y2="266" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="277" x2="126" y2="277" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="288" x2="126" y2="288" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="299" x2="126" y2="299" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="310" x2="126" y2="310" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    <line x1="96" y1="321" x2="126" y2="321" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+    
+    <text class="zl" x="60" y="262" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Open floor</text>
+  </g>
+
+  <!-- 1.31m step marker -->
+
+  <!-- ZONE: Entry / Experience Room -->
+  <g class="z" id="z-gf-entry" data-key="gf-entry" onmouseenter="hv(this)" onclick="hv(this)">
+    <rect class="zf" x="6" y="372" width="108.5" height="356" fill="var(--ct)" stroke="var(--ct)"/>
+    
+    <!-- Speaker hotspot (top right corner) -->
+    <rect class="fixture" x="100" y="376" width="11" height="14" rx="2"
+      fill="rgba(60,60,60,0.2)" stroke="#444" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Speaker', 'Connected at wall outlet. Cable covered by cable cover. iPad/iPhone connected via Bluetooth. Selected playlist playing at all times.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    
+    <!-- Window ledge/display (bottom wall, left of doorway) -->
+    <rect class="fixture" x="8" y="718" width="72" height="9" rx="1.5"
+      fill="rgba(80,80,80,0.18)" stroke="#555" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Ledge/Window display', 'Suspended garment. Small view into the feeling of the collection.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    
+    <text class="zl" x="60" y="535" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Entry /</text>
+    <text class="zl" x="60" y="547" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Experience Room</text>
+  </g>
+
+</svg>
+</div>
+
+<!-- ===== BASEMENT =====
+  Pixel-traced from polycam2.png (1279×8000px). Scale: 0.166px/imgpx. Origin: (103,180).
+  
+  Outer polygon corners (img→SVG):
+  (205,215)→(17,6)   TL Object/Display
+  (1148,215)→(174,6) TR Object/Display
+  (1140,870)→(173,115) TR Main Room 1 (steps out slightly)
+  (1140,2655)→(173,411) right wall Main Room 1 bottom
+  (1110,2860)→(168,445) right wall Sub Room (steps in)
+  (1110,5285)→(168,847) right wall Storage/Pass bottom
+  (1129,5285)→(172,847) right wall Main Room 2 (steps out)
+  (1129,7580)→(172,1228) bottom right
+  (416,7580)→(52,1228) bottom left ext
+  (416,6840)→(52,1109) ext top-left
+  (103,6840)→(0,1109) Main Room 2 left bottom
+  (103,2860)→(0,445) Sub Room left wall (protrusion)
+  (178,2860)→(12,445) steps right to Main Room 1 left
+  (178,870)→(12,115) Main Room 1 left wall top
+  (205,870)→(17,115) steps right to Object/Display left
+  back to start
+  
+  Fixtures:
+  - Racks: thin black rectangles along walls (as shown in plan)
+  - Plinth: thick outlined rectangle in Object/Display room
+  - Blue display ledge: outlined rectangle left wall of Main Room 2
+-->
+<div class="fv" id="vb">
+<svg width="195" height="1260" viewBox="-5 -5 210 1270" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="fab" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="8" x2="8" y2="0" stroke="#c5c0b5" stroke-width=".7"/>
+    </pattern>
+  </defs>
+
+  <!-- OUTER WALL MASS - precise polygon from pixel trace -->
+  <polygon points="
+    17,6 174,6
+    173,115
+    173,411
+    168,445
+    168,847
+    172,847
+    172,1228
+    52,1228
+    52,1109
+    0,1109
+    0,445
+    12,445
+    12,115
+    17,115
+    17,6"
+    fill="var(--wf)" stroke="var(--ws)" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- ROOM INTERIORS -->
+  <!-- Object/Display -->
+  <polygon points="20,10 170,10 170,93 20,93" fill="var(--rf)"/>
+  <!-- Transition pillar corners (the dark corner posts between Obj/Display and Main Room 1) -->
+  <rect x="20" y="93" width="23" height="26" fill="var(--wf)"/>
+  <rect x="150" y="93" width="23" height="26" fill="var(--wf)"/>
+  <!-- Main Room 1 -->
+  <polygon points="16,119 167,119 167,407 16,407" fill="var(--rf)"/>
+  <!-- Sub Room / Walkthrough -->
+  <polygon points="4,449 164,449 164,695 4,695" fill="var(--rf)"/>
+  <!-- Storage + Passthrough -->
+  <polygon points="4,699 164,699 164,843 4,843" fill="var(--rf)"/>
+  <!-- Main Room 2 -->
+  <polygon points="4,851 168,851 168,1105 4,1105" fill="var(--rf)"/>
+  <!-- Bottom extension -->
+  <polygon points="56,1109 168,1109 168,1224 56,1224" fill="var(--rf)"/>
+
+  <!-- Interior horizontal walls -->
+  <line x1="20" y1="93" x2="170" y2="93" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="16" y1="119" x2="167" y2="119" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="4" y1="449" x2="164" y2="449" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="4" y1="695" x2="164" y2="695" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="4" y1="699" x2="164" y2="699" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="4" y1="843" x2="164" y2="843" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="4" y1="851" x2="168" y2="851" stroke="var(--ws)" stroke-width="1.5"/>
+  <line x1="56" y1="1109" x2="168" y2="1109" stroke="var(--ws)" stroke-width="1.5"/>
+
+  <!-- Storage/Passthrough interior divider -->
+  <line x1="90" y1="699" x2="90" y2="843" stroke="var(--ws)" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+  <!-- ====== FIXTURES ====== -->
+
+  <!-- RACKS in Main Room 1 (black, equal length, along both walls, width=4, more gaps) -->
+  <!-- Left wall racks: 3 equal segments -->
+  <rect x="16" y="140" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="16" y="230" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="16" y="320" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <!-- Right wall racks: 3 equal segments -->
+  <rect x="163" y="140" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="163" y="230" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="163" y="320" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+
+  <!-- RACKS in Sub Room (left wall only, 2 segments, width=4, more centered) -->
+  <rect x="4" y="490" width="4" height="80" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="4" y="590" width="4" height="80" rx=".5" fill="#2a2a26" pointer-events="none"/>
+
+  <!-- RACKS in Main Room 2 (right wall, 3 equal segments, width=4) -->
+  <rect x="164" y="862" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="164" y="942" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+  <rect x="164" y="1022" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
+
+  <!-- ====== ZONES ====== -->
+
+  <!-- ZONE: Object / Display -->
+  <g class="z" id="z-b-object" data-key="b-object" onmouseenter="hv(this)" onclick="hv(this)">
+    <rect class="zf" x="20" y="10" width="150" height="83" fill="var(--ca)" stroke="var(--ca)"/>
+    <text class="zl" x="95" y="76" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Object / Display</text>
+  </g>
+
+  <!-- PLINTH in Object/Display (hoverable fixture - must be after zone to be clickable) -->
+  <rect class="fixture" x="45" y="43" width="100" height="16" rx="1.5"
+    fill="rgba(100,90,80,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Plinth', 'Block-printed Noguchi lamp reinterpretation, or a series of small physical objects that define the collection. Displayed like found objects/art.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- ZONE: Main Room 1 -->
+  <g class="z" id="z-b-main1" data-key="b-main1" onmouseenter="hv(this)" onclick="hv(this)">
+    <polygon class="zf" points="16,119 167,119 167,407 16,407" fill="var(--cb)" stroke="var(--cb)"/>
+    <text class="zl" x="91" y="265" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Main Room 1</text>
+  </g>
+
+  <!-- Stool (hoverable fixture - circle in top left of Main Room 1) -->
+  <circle class="fixture" cx="26" cy="130" r="6"
+    fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Stool', '')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- ZONE: Sub Room / Walkthrough -->
+  <g class="z" id="z-b-subroom" data-key="b-subroom" onmouseenter="hv(this)" onclick="hv(this)">
+    <polygon class="zf" points="4,449 164,449 164,695 4,695" fill="var(--ct)" stroke="var(--ct)"/>
+    <text class="zl" x="70" y="568" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Sub Room /</text>
+    <text class="zl" x="70" y="582" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Walkthrough</text>
+  </g>
+
+  <!-- Staircase upstairs (hoverable fixture - must be after zone to be clickable, thinner) -->
+  <rect class="fixture" x="120" y="450" width="44" height="140" rx="2"
+    fill="rgba(50,90,160,0.08)" stroke="#5580bb" stroke-width="1.2" stroke-dasharray="5,3"
+    onmouseenter="showFixture(event, 'Staircase', 'Up to ground floor.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+  <line x1="120" y1="460" x2="164" y2="460" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="470" x2="164" y2="470" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="480" x2="164" y2="480" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="490" x2="164" y2="490" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="500" x2="164" y2="500" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="510" x2="164" y2="510" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="520" x2="164" y2="520" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="530" x2="164" y2="530" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="540" x2="164" y2="540" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="550" x2="164" y2="550" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="560" x2="164" y2="560" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="570" x2="164" y2="570" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+  <line x1="120" y1="580" x2="164" y2="580" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
+
+  <!-- Bench (hoverable fixture - vertical against wall below stairs in Sub Room) -->
+  <rect class="fixture" x="155" y="600" width="10" height="35" rx="1.5"
+    fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Bench', '')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- ZONE: Storage + Passthrough -->
+  <g class="z" id="z-b-pass" data-key="b-pass" onmouseenter="hv(this)" onclick="hv(this)">
+    <polygon class="zf" points="4,699 164,699 164,843 4,843" fill="var(--cc)" stroke="var(--cc)"/>
+    <text class="zl" x="47" y="795" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="6.5" fill="var(--ts)">Storage</text>
+    <text class="zl" x="127" y="772" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="6.5" fill="var(--ts)">Passthrough</text>
+  </g>
+
+  <!-- Storage boxes (hoverable fixtures - must be after zone) -->
+  <!-- Top box: tools, hooks, fixes -->
+  <rect class="fixture" x="20" y="715" width="50" height="18" rx="1"
+    fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Tools box', 'Tools, hooks, fixes for the space. All labelled. Maintain and return after use.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+  
+  <!-- Bottom box: steamers, lint rollers, garment care -->
+  <rect class="fixture" x="20" y="738" width="50" height="18" rx="1"
+    fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Garment care box', 'Steamers, lint rollers, garment tape, sewing kit. All labelled. Maintain and return after use.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- ZONE: Main Room 2 -->
+  <g class="z" id="z-b-main2" data-key="b-main2" onmouseenter="hv(this)" onclick="hv(this)">
+    <polygon class="zf" points="4,851 168,851 168,1105 4,1105" fill="var(--cb)" stroke="var(--cb)"/>
+    <text class="zl" x="88" y="980" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Main Room 2</text>
+  </g>
+
+  <!-- Full length mirror (hoverable fixture - top left, shorter, not at corner) -->
+  <rect class="fixture" x="22" y="858" width="60" height="4" rx="1"
+    fill="rgba(100,100,100,0.12)" stroke="#666" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Full length mirror', '')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- Display ledge (hoverable fixture - vertical along left wall, starting after mirror) -->
+  <rect class="fixture" x="8" y="870" width="9" height="220" rx="1.5"
+    fill="rgba(80,80,80,0.18)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Display ledge', 'Objects, ephemera, accessories displayed here. Buyers can place drinks here. iPad and charger within reach.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+  <!-- ZONE: Fitting Room -->
+  <g class="z" id="z-b-fitting" data-key="b-fitting" onmouseenter="hv(this)" onclick="hv(this)">
+    <polygon class="zf" points="56,1109 168,1109 168,1224 56,1224" fill="var(--ct)" stroke="var(--ct)"/>
+    <text class="zl" x="112" y="1170" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Fitting Room</text>
+  </g>
+
+  <!-- Stool (hoverable fixture - circle in bottom left corner of fitting room) -->
+  <circle class="fixture" cx="65" cy="1210" r="6"
+    fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
+    onmouseenter="showFixture(event, 'Stool', 'For sitting while trying on items.')"
+    onmouseleave="hideFixture()"
+    pointer-events="all"/>
+
+</svg>
+</div>
+
+</div><!-- /plan -->
+
+<div class="info">
+  <div class="idle" id="ii">
+    <div class="ik">SS27 · Paris</div>
+    <div class="ih">Hover over each area to see details.</div>
+  </div>
+  <div class="ap" id="ia">
+    <div class="aft" id="aft"></div>
+    <div class="ahed" id="ahed"></div>
+    <div class="asub" id="asub"></div>
+    <div class="div"></div>
+    <div id="aly"></div>
+    <div class="img-trigger" id="img-trigger" onclick="showGallery()">Click for proposal images →</div>
+  </div>
+  <div class="leg">
+    <div class="legt">Experience layers</div>
+    <div class="legr"><div class="legs h"></div>Hospitality</div>
+    <div class="legr"><div class="legs d"></div>Garment display</div>
+    <div class="legr"><div class="legs f"></div>Buyer flow</div>
+    <div class="legr"><div class="legs o"></div>Object / installation</div>
+  </div>
+</div>
+</div>
+
+<div class="gallery-overlay" id="gallery">
+  <div class="gallery-close" onclick="hideGallery()">Close ✕</div>
+  <div class="gallery-grid">
+    <img src="Brownish_Red_Fabric_Image.jpg" alt="Proposal image 1">
+    <img src="Google_Gemini_Image__4_.jpg" alt="Proposal image 2">
+    <img src="Google_Gemini_Image__5_.jpg" alt="Proposal image 3">
+    <img src="Google_Gemini_Image__6_.jpg" alt="Proposal image 4">
+  </div>
+</div>
+
+<div id="fixture-tip">
+  <div id="fixture-tip-title"></div>
+  <div id="fixture-tip-body"></div>
+</div>
+
+<script>
+const Z={
+  'gf-entry':{floor:'Ground floor',title:'Entry/Experience Room',meta:'Arrival · orientation',layers:[
+    {t:'f',l:'Buyer flow',b:'Staff accommodate coat and bag. Space acts as a reset from the street. Brief.'},
+    {t:'d',l:'Garment display',b:'Four or five pieces — developmental and final. Display shows the direction driving now and in future seasons.'},
+    {t:'h',l:'Hospitality',b:'Soft welcome, not overbearing. Let visitors discover and feel out the space on their own. Music connected to speakers at all times.'},
+    {t:'o',l:'Atmosphere',b:'Pieces tell part of the story.'}
+  ]},
+  'gf-storage':{floor:'Ground floor',title:'Storage/Refreshment Prep',meta:'Back of house · upper section',layers:[
+    {t:'h',l:'Area purpose',b:'Staff breaks and refreshment prep. Landlord will use this room at times but staff are free to use it. Door to this room stays closed at all times.'},
+    {t:'f',l:'Note',b:'No press samples or stock stored here. See fridge and prep table for servingware details.'}
+  ]},
+  'gf-stairs':{floor:'Ground floor',title:'Open floor · Stair zone',meta:'Welcome point to basement',layers:[
+    {t:'f',l:'Purpose',b:'Buyers are welcomed down to the collection.'}
+  ]},
+  'b-object':{floor:'Basement',title:'Object/Display',meta:'Top of basement · plinth zone',layers:[
+    {t:'o',l:'Object installation',b:'Plinth holds either a block-printed Noguchi lamp reinterpretation or a series of small objects that define the collection. Displayed like found objects.'},
+    {t:'f',l:'Buyer flow',b:'Small window into the process. A pause from the room.'}
+  ]},
+  'b-main1':{floor:'Basement',title:'Main Room 1',meta:'Primary collection gallery · bilateral racks',layers:[
+    {t:'d',l:'Garment display',b:'Garments arranged in sequence of process/colour blocked. Material-led storytelling. Density of racks is low, allowing garments to breathe.'},
+    {t:'f',l:'Buyer flow',b:'Buyers are introduced to the collection here. First telling of the collection.'},
+    {t:'h',l:'Pace',b:'Assistant staff are present but should leave room for Divyam to walk the buyer through the collection. Drinks can be served from here.'}
+  ]},
+  'b-subroom':{floor:'Basement',title:'Sub Room/Walkthrough',meta:'Transition zone · conversation · fabric floor',layers:[
+    {t:'d',l:'Garment display',b:'Core items displayed. A threshold between both sides. Might be displayed on the right hand wall.'},
+    {t:'f',l:'Buyer flow',b:'Passthrough between upper and lower. Staircase back to ground floor accessed from here.'},
+    {t:'h',l:'Hospitality',b:'Small chairs for staff or buyers. Staff can put down pending drink trays here if needed. Access to storage (bottom left) is accessible here.'},
+    {t:'o',l:'Material atmosphere',b:'Transitional between spaces. Custom block-printed wall sconce lamps create ambience here.'}
+  ]},
+  'b-pass':{floor:'Basement',title:'Storage · Passthrough',meta:'Operations threshold',layers:[
+    {t:'f',l:'Transition',b:'Transitional space. An artwork, collection details, imagery from lookbook taped to the wall. Almost like a studio setting.'},
+    {t:'h',l:'Back of house',b:'Tiered plastic boxes for tools and garment care, labelled and organised accordingly. Storage for luggage, broken-down boxes to be reused, additional extras or need-to-haves.'}
+  ]},
+  'b-main2':{floor:'Basement',title:'Main Room 2',meta:'Largest room · wholesale close',layers:[
+    {t:'d',l:'Garment display',b:'Garments or thematic items from the collection displayed here. Objects, ephemera, accessories along the ledge.'},
+    {t:'f',l:'Buyer flow',b:'Buyers are encouraged to try on items, take mirror photos, or use adjacent fitting room to really try on clothing. Should feel like a retail experience.'},
+    {t:'o',l:'Display ledge',b:'Objects, ephemera, accessories. Buyers can place drinks here. iPad and charger within reach.'}
+  ]},
+  'b-fitting':{floor:'Basement',title:'Fitting Room',meta:'Private try-on space',layers:[
+    {t:'f',l:'Purpose',b:'Private space for buyers or model to try on clothing. Stool available for sitting.'}
+  ]}
+};
+let cur=null;
+function hv(el){
+  if(cur&&cur!==el)cur.classList.remove('on');
+  cur=el;el.classList.add('on');
+  const d=Z[el.dataset.key];if(!d)return;
+  document.getElementById('ii').style.display='none';
+  const p=document.getElementById('ia');p.classList.add('on');
+  document.getElementById('aft').textContent=d.floor;
+  document.getElementById('ahed').textContent=d.title;
+  document.getElementById('asub').textContent=d.meta;
+  const lc=document.getElementById('aly');lc.innerHTML='';
+  d.layers.forEach(l=>{
+    const div=document.createElement('div');div.className='ly';
+    div.innerHTML=`<div class="lh"><div class="ld ${l.t}"></div><span class="lt">${l.l}</span></div><div class="lb">${l.b}</div>`;
+    lc.appendChild(div);
+  });
+  
+  // Show image trigger only for gf-entry
+  const trigger=document.getElementById('img-trigger');
+  if(el.dataset.key==='gf-entry'){
+    setTimeout(()=>trigger.classList.add('show'),300);
+  }else{
+    trigger.classList.remove('show');
+  }
+}
+function sf(f){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.fv').forEach(v=>v.classList.remove('on'));
+  document.querySelector(`[onclick="sf('${f}')"]`).classList.add('on');
+  document.getElementById(f==='ground'?'vg':'vb').classList.add('on');
+  if(cur){cur.classList.remove('on');cur=null;}
+  document.getElementById('ii').style.display='';
+  document.getElementById('ia').classList.remove('on');
+  document.getElementById('img-trigger').classList.remove('show');
+}
+
+function showGallery(){
+  document.getElementById('gallery').classList.add('show');
+}
+
+function hideGallery(){
+  document.getElementById('gallery').classList.remove('show');
+}
+
+function showFixture(e, title, body) {
+  const tip = document.getElementById('fixture-tip');
+  document.getElementById('fixture-tip-title').textContent = title;
+  document.getElementById('fixture-tip-body').textContent = body;
+  tip.style.display = 'block';
+  tip.style.left = (e.clientX + 12) + 'px';
+  tip.style.top = (e.clientY + 12) + 'px';
+}
+
+function hideFixture() {
+  document.getElementById('fixture-tip').style.display = 'none';
+}
+</script>
+</body>
+</html>
