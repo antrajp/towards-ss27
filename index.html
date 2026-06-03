@@ -193,29 +193,6 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
 
 <!-- ===== BASEMENT =====
   Pixel-traced from polycam2.png (1279×8000px). Scale: 0.166px/imgpx. Origin: (103,180).
-  
-  Outer polygon corners (img→SVG):
-  (205,215)→(17,6)   TL Object/Display
-  (1148,215)→(174,6) TR Object/Display
-  (1140,870)→(173,115) TR Main Room 1 (steps out slightly)
-  (1140,2655)→(173,411) right wall Main Room 1 bottom
-  (1110,2860)→(168,445) right wall Sub Room (steps in)
-  (1110,5285)→(168,847) right wall Storage/Pass bottom
-  (1129,5285)→(172,847) right wall Main Room 2 (steps out)
-  (1129,7580)→(172,1228) bottom right
-  (416,7580)→(52,1228) bottom left ext
-  (416,6840)→(52,1109) ext top-left
-  (103,6840)→(0,1109) Main Room 2 left bottom
-  (103,2860)→(0,445) Sub Room left wall (protrusion)
-  (178,2860)→(12,445) steps right to Main Room 1 left
-  (178,870)→(12,115) Main Room 1 left wall top
-  (205,870)→(17,115) steps right to Object/Display left
-  back to start
-  
-  Fixtures:
-  - Racks: thin black rectangles along walls (as shown in plan)
-  - Plinth: thick outlined rectangle in Object/Display room
-  - Blue display ledge: outlined rectangle left wall of Main Room 2
 -->
 <div class="fv" id="vb">
 <svg width="195" height="1260" viewBox="-5 -5 210 1270" xmlns="http://www.w3.org/2000/svg">
@@ -276,21 +253,19 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
 
   <!-- ====== FIXTURES ====== -->
 
-  <!-- RACKS in Main Room 1 (black, equal length, along both walls, width=4, more gaps) -->
-  <!-- Left wall racks: 3 equal segments -->
+  <!-- RACKS in Main Room 1 -->
   <rect x="16" y="140" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="16" y="230" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="16" y="320" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
-  <!-- Right wall racks: 3 equal segments -->
   <rect x="163" y="140" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="163" y="230" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="163" y="320" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
 
-  <!-- RACKS in Sub Room (left wall only, 2 segments, width=4, more centered) -->
+  <!-- RACKS in Sub Room -->
   <rect x="4" y="490" width="4" height="80" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="4" y="590" width="4" height="80" rx=".5" fill="#2a2a26" pointer-events="none"/>
 
-  <!-- RACKS in Main Room 2 (right wall, 3 equal segments, width=4) -->
+  <!-- RACKS in Main Room 2 -->
   <rect x="164" y="862" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="164" y="942" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
   <rect x="164" y="1022" width="4" height="70" rx=".5" fill="#2a2a26" pointer-events="none"/>
@@ -300,15 +275,8 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
   <!-- ZONE: Object / Display -->
   <g class="z" id="z-b-object" data-key="b-object" onmouseenter="hv(this)" onclick="hv(this)">
     <rect class="zf" x="20" y="10" width="150" height="83" fill="var(--ca)" stroke="var(--ca)"/>
-    <text class="zl" x="95" y="76" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Object / Display</text>
+    <text class="zl" x="95" y="76" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Storage</text>
   </g>
-
-  <!-- PLINTH in Object/Display (hoverable fixture - must be after zone to be clickable) -->
-  <rect class="fixture" x="45" y="43" width="100" height="16" rx="1.5"
-    fill="rgba(100,90,80,0.15)" stroke="#555" stroke-width=".8"
-    onmouseenter="showFixture(event, 'Plinth', 'Block-printed Noguchi lamp reinterpretation, or a series of small physical objects that define the collection. Displayed like found objects/art.')"
-    onmouseleave="hideFixture()"
-    pointer-events="all"/>
 
   <!-- ZONE: Main Room 1 -->
   <g class="z" id="z-b-main1" data-key="b-main1" onmouseenter="hv(this)" onclick="hv(this)">
@@ -316,7 +284,7 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <text class="zl" x="91" y="265" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Main Room 1</text>
   </g>
 
-  <!-- Stool (hoverable fixture - circle in top left of Main Room 1) -->
+  <!-- Stool in Main Room 1 -->
   <circle class="fixture" cx="26" cy="130" r="6"
     fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Stool', '')"
@@ -330,7 +298,7 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <text class="zl" x="70" y="582" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Walkthrough</text>
   </g>
 
-  <!-- Staircase upstairs (hoverable fixture - must be after zone to be clickable, thinner) -->
+  <!-- Staircase upstairs -->
   <rect class="fixture" x="120" y="450" width="44" height="140" rx="2"
     fill="rgba(50,90,160,0.08)" stroke="#5580bb" stroke-width="1.2" stroke-dasharray="5,3"
     onmouseenter="showFixture(event, 'Staircase', 'Up to ground floor.')"
@@ -350,7 +318,7 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
   <line x1="120" y1="570" x2="164" y2="570" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
   <line x1="120" y1="580" x2="164" y2="580" stroke="#8aabcc" stroke-width=".7" pointer-events="none"/>
 
-  <!-- Bench (hoverable fixture - vertical against wall below stairs in Sub Room) -->
+  <!-- Bench in Sub Room -->
   <rect class="fixture" x="155" y="600" width="10" height="35" rx="1.5"
     fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Bench', '')"
@@ -364,15 +332,12 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <text class="zl" x="127" y="772" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="6.5" fill="var(--ts)">Passthrough</text>
   </g>
 
-  <!-- Storage boxes (hoverable fixtures - must be after zone) -->
-  <!-- Top box: tools, hooks, fixes -->
+  <!-- Storage boxes -->
   <rect class="fixture" x="20" y="715" width="50" height="18" rx="1"
     fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Tools box', 'Tools, hooks, fixes for the space. All labelled. Maintain and return after use.')"
     onmouseleave="hideFixture()"
     pointer-events="all"/>
-  
-  <!-- Bottom box: steamers, lint rollers, garment care -->
   <rect class="fixture" x="20" y="738" width="50" height="18" rx="1"
     fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Garment care box', 'Steamers, lint rollers, garment tape, sewing kit. All labelled. Maintain and return after use.')"
@@ -385,14 +350,14 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <text class="zl" x="88" y="980" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Main Room 2</text>
   </g>
 
-  <!-- Full length mirror (hoverable fixture - top left, shorter, not at corner) -->
+  <!-- Full length mirror -->
   <rect class="fixture" x="22" y="858" width="60" height="4" rx="1"
     fill="rgba(100,100,100,0.12)" stroke="#666" stroke-width=".8"
     onmouseenter="showFixture(event, 'Full length mirror', '')"
     onmouseleave="hideFixture()"
     pointer-events="all"/>
 
-  <!-- Display ledge (hoverable fixture - vertical along left wall, starting after mirror) -->
+  <!-- Display ledge -->
   <rect class="fixture" x="8" y="870" width="9" height="220" rx="1.5"
     fill="rgba(80,80,80,0.18)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Display ledge', 'Objects, ephemera, accessories displayed here. Buyers can place drinks here. iPad and charger within reach.')"
@@ -405,7 +370,7 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <text class="zl" x="112" y="1170" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Fitting Room</text>
   </g>
 
-  <!-- Stool (hoverable fixture - circle in bottom left corner of fitting room) -->
+  <!-- Stool in fitting room -->
   <circle class="fixture" cx="65" cy="1210" r="6"
     fill="rgba(100,100,100,0.15)" stroke="#555" stroke-width=".8"
     onmouseenter="showFixture(event, 'Stool', 'For sitting while trying on items.')"
@@ -428,7 +393,6 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <div class="asub" id="asub"></div>
     <div class="div"></div>
     <div id="aly"></div>
-    <div class="img-trigger" id="img-trigger" onclick="showGallery()">Click for proposal images →</div>
   </div>
   <div class="leg">
     <div class="legt">Experience layers</div>
@@ -440,16 +404,6 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
 </div>
 </div>
 
-<div class="gallery-overlay" id="gallery">
-  <div class="gallery-close" onclick="hideGallery()">Close ✕</div>
-  <div class="gallery-grid">
-    <img src="Brownish_Red_Fabric_Image.jpg" alt="Proposal image 1">
-    <img src="Google_Gemini_Image__4_.jpg" alt="Proposal image 2">
-    <img src="Google_Gemini_Image__5_.jpg" alt="Proposal image 3">
-    <img src="Google_Gemini_Image__6_.jpg" alt="Proposal image 4">
-  </div>
-</div>
-
 <div id="fixture-tip">
   <div id="fixture-tip-title"></div>
   <div id="fixture-tip-body"></div>
@@ -459,7 +413,7 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
 const Z={
   'gf-entry':{floor:'Ground floor',title:'Entry/Experience Room',meta:'Arrival · orientation',layers:[
     {t:'f',l:'Buyer flow',b:'Staff accommodate coat and bag. Space acts as a reset from the street. Brief.'},
-    {t:'d',l:'Garment display',b:'Four or five pieces — developmental and final. Display shows the direction driving now and in future seasons.'},
+    {t:'d',l:'Garment display',b:'Three pieces — developmental and final. Display shows the direction driving now and in future seasons.'},
     {t:'h',l:'Hospitality',b:'Soft welcome, not overbearing. Let visitors discover and feel out the space on their own. Music connected to speakers at all times.'},
     {t:'o',l:'Atmosphere',b:'Pieces tell part of the story.'}
   ]},
@@ -470,9 +424,8 @@ const Z={
   'gf-stairs':{floor:'Ground floor',title:'Open floor · Stair zone',meta:'Welcome point to basement',layers:[
     {t:'f',l:'Purpose',b:'Buyers are welcomed down to the collection.'}
   ]},
-  'b-object':{floor:'Basement',title:'Object/Display',meta:'Top of basement · plinth zone',layers:[
-    {t:'o',l:'Object installation',b:'Plinth holds either a block-printed Noguchi lamp reinterpretation or a series of small objects that define the collection. Displayed like found objects.'},
-    {t:'f',l:'Buyer flow',b:'Small window into the process. A pause from the room.'}
+  'b-object':{floor:'Basement',title:'Storage',meta:'Top of basement · back of house',layers:[
+    {t:'f',l:'Area purpose',b:'Suitcases and luggage held here. Closed to buyers — back of house only.'}
   ]},
   'b-main1':{floor:'Basement',title:'Main Room 1',meta:'Primary collection gallery · bilateral racks',layers:[
     {t:'d',l:'Garment display',b:'Garments arranged in sequence of process/colour blocked. Material-led storytelling. Density of racks is low, allowing garments to breathe.'},
@@ -514,14 +467,6 @@ function hv(el){
     div.innerHTML=`<div class="lh"><div class="ld ${l.t}"></div><span class="lt">${l.l}</span></div><div class="lb">${l.b}</div>`;
     lc.appendChild(div);
   });
-  
-  // Show image trigger only for gf-entry
-  const trigger=document.getElementById('img-trigger');
-  if(el.dataset.key==='gf-entry'){
-    setTimeout(()=>trigger.classList.add('show'),300);
-  }else{
-    trigger.classList.remove('show');
-  }
 }
 function sf(f){
   document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
@@ -531,15 +476,6 @@ function sf(f){
   if(cur){cur.classList.remove('on');cur=null;}
   document.getElementById('ii').style.display='';
   document.getElementById('ia').classList.remove('on');
-  document.getElementById('img-trigger').classList.remove('show');
-}
-
-function showGallery(){
-  document.getElementById('gallery').classList.add('show');
-}
-
-function hideGallery(){
-  document.getElementById('gallery').classList.remove('show');
 }
 
 function showFixture(e, title, body) {
