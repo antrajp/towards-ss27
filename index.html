@@ -184,8 +184,25 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
       onmouseleave="hideFixture()"
       pointer-events="all"/>
     
-    <text class="zl" x="60" y="535" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Entry /</text>
-    <text class="zl" x="60" y="547" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Experience Room</text>
+    <!-- Garment display markers (three pieces, staggered) -->
+    <rect class="fixture" x="66" y="420" width="26" height="30" rx="1.5"
+      fill="rgba(150,147,140,0.55)" stroke="#6f6c64" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Garment display', 'One of three pieces on display.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    <rect class="fixture" x="47" y="515" width="26" height="30" rx="1.5"
+      fill="rgba(150,147,140,0.55)" stroke="#6f6c64" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Garment display', 'One of three pieces on display.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+    <rect class="fixture" x="28" y="615" width="26" height="30" rx="1.5"
+      fill="rgba(150,147,140,0.55)" stroke="#6f6c64" stroke-width=".8"
+      onmouseenter="showFixture(event, 'Garment display', 'One of three pieces on display.')"
+      onmouseleave="hideFixture()"
+      pointer-events="all"/>
+
+    <text class="zl" x="60" y="478" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Entry /</text>
+    <text class="zl" x="60" y="490" text-anchor="middle" font-family="Hiragino Kaku Gothic W3, ヒラギノ角ゴ Pro, sans-serif" font-size="7.5" fill="var(--ts)" letter-spacing=".05em">Experience Room</text>
   </g>
 
 </svg>
