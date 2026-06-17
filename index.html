@@ -16,7 +16,7 @@ html,body{height:100%;background:var(--bg);color:var(--tp);font-family:'Hiragino
 header{position:fixed;top:0;left:0;right:0;z-index:101;background:var(--bg);border-bottom:.5px solid var(--bd);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
 .hlogo{font-family:serif;font-size:20px;font-weight:400;letter-spacing:-.02em}
 .hmenu{display:flex;gap:2.5rem}
-.hmenu a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);text-decoration:none;transition:color .2s;font-weight:500}
+.hmenu a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);text-decoration:none;transition:color .2s;font-weight:500;cursor:pointer}
 .hmenu a:hover,.hmenu a.active{color:var(--tp)}
 nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);border-bottom:.5px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:44px}
 .nav-left{display:flex;gap:2rem}
@@ -66,25 +66,82 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
 .gallery-grid img{width:100%;height:auto;display:block;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
 .gallery-close{position:absolute;top:2rem;right:2rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);cursor:pointer;transition:color .2s;padding:8px 16px;border:1px solid var(--bd)}
 .gallery-close:hover{color:var(--tp);border-color:var(--tp)}
+
+/* ===== PAGE SYSTEM ===== */
+.page{display:none}
+#page-guide.on{display:grid}
+#page-sop.on,#page-hosp.on{display:block}
+
+/* ===== DOC LAYOUT (sop / hospitality) ===== */
+.doc{padding-top:104px;min-height:100vh}
+.doc-inner{display:grid;grid-template-columns:360px 1fr;align-items:start}
+.doc-rail{padding:2.6rem 2.4rem;position:sticky;top:104px}
+.doc-rk{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);font-weight:500;line-height:2.2}
+.doc-rt{font-size:24px;font-weight:500;letter-spacing:-.01em;line-height:1.2;margin-top:.6rem;color:var(--tp)}
+.doc-ri{font-size:12px;color:var(--ts);line-height:1.85;margin-top:1.3rem;max-width:290px}
+.doc-body{padding:2.6rem 3rem 5rem;border-left:.5px solid var(--bd);min-height:calc(100vh - 104px)}
+
+/* ===== SOP ===== */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem 2.8rem}
+.phase-num{font-size:13px;line-height:1;font-weight:600;letter-spacing:.12em;color:var(--tt)}
+.phase-name{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tp);font-weight:600;margin-top:.6rem}
+.phase-sub{font-size:10px;color:var(--tt);letter-spacing:.04em;margin-top:4px;margin-bottom:1.4rem}
+.cl{list-style:none}
+.cl li{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-top:.5px solid var(--bd);cursor:pointer;font-size:12.5px;line-height:1.55}
+.cl li:first-child{border-top:none}
+.box{width:13px;height:13px;border-radius:50%;border:1.2px solid var(--bdm);flex-shrink:0;margin-top:1px;position:relative;transition:border-color .2s,background .2s}
+.cl li:hover .box{border-color:var(--ts)}
+.cl li.done .box{background:var(--tp);border-color:var(--tp)}
+.cl li.done .box::after{content:"";position:absolute;left:4px;top:1px;width:3px;height:6.5px;border:solid var(--bg);border-width:0 1.3px 1.3px 0;transform:rotate(45deg)}
+.cl-t{color:var(--ts);transition:color .2s}
+.cl li:hover .cl-t{color:var(--tp)}
+.cl li.done .cl-t{color:var(--tt);text-decoration:line-through;text-decoration-color:var(--bdm)}
+.lnk{color:var(--ts);text-decoration:none;border-bottom:1px solid var(--bdm);transition:color .2s,border-color .2s}
+.lnk:hover{color:var(--tp);border-bottom-color:var(--tp)}
+
+/* ===== HOSPITALITY ===== */
+.hsec{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tt);font-weight:600;margin:3rem 0 1.6rem;padding-top:1.6rem;border-top:.5px solid var(--bd)}
+.hsec.first{margin-top:0;padding-top:0;border-top:none}
+.drinks{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6rem 2.4rem}
+.drink-name{font-size:15px;font-weight:600;color:var(--tp);letter-spacing:.01em}
+.drink-sub{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--tt);margin-top:5px}
+.drink-method{font-size:12px;color:var(--ts);line-height:1.85;margin-top:.7rem}
+.drink-var{font-size:12px;color:var(--ts);line-height:1.7;margin-top:.55rem}
+.drink-var b{color:var(--tp);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px}
+.tbd{display:inline-block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ca);border:.5px solid var(--ca);border-radius:2px;padding:1.5px 6px;margin-top:.8rem;opacity:.85}
+.snack{max-width:540px}
+.allergen{display:flex;gap:11px;align-items:flex-start;margin-top:1.2rem;padding:11px 14px;background:rgba(191,78,38,.06);border-left:2px solid var(--cc);font-size:12px;color:var(--ts);line-height:1.6;max-width:540px}
+.allergen-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--cc);font-weight:700;flex-shrink:0;margin-top:1px}
+
+@media(max-width:880px){
+  .doc-inner{grid-template-columns:1fr}
+  .doc-rail{position:static;height:auto;border-bottom:.5px solid var(--bd)}
+  .doc-body{border-left:none}
+  .phases,.drinks{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <header>
   <div class="hlogo">toward(s) · ss27</div>
   <div class="hmenu">
-    <a href="#" class="active">Showroom guide</a>
-    <a href="#">SOP</a>
-    <a href="#">Hospitality</a>
+    <a id="nav-guide" class="active" onclick="showPage('guide')">Showroom guide</a>
+    <a id="nav-sop" onclick="showPage('sop')">SOP</a>
+    <a id="nav-hosp" onclick="showPage('hosp')">Hospitality</a>
   </div>
 </header>
 <nav>
-  <div class="nav-left">
+  <div class="nav-left" id="floorNav">
     <button class="fb on" onclick="sf('ground')">Ground floor</button>
     <button class="fb" onclick="sf('basement')">Basement</button>
   </div>
   <div class="nav-right">Showroom proposal · 98 rue Quincampoix, 75003 Paris</div>
 </nav>
-<div class="main">
+
+<!-- ============================================================ -->
+<!-- PAGE: SHOWROOM GUIDE -->
+<!-- ============================================================ -->
+<div class="main page on" id="page-guide">
 <div class="plan">
 
 <!-- ===== GROUND FLOOR =====
@@ -419,7 +476,119 @@ nav{position:fixed;top:60px;left:0;right:0;z-index:100;background:var(--bg);bord
     <div class="legr"><div class="legs o"></div>Object / installation</div>
   </div>
 </div>
-</div>
+</div><!-- /page-guide -->
+
+<!-- ============================================================ -->
+<!-- PAGE: SOP -->
+<!-- ============================================================ -->
+<div class="page doc" id="page-sop">
+  <div class="doc-inner">
+    <div class="doc-rail">
+      <div class="doc-rk">Standard operating procedure</div>
+      <div class="doc-rt">Daily checklist</div>
+      <div class="doc-ri">A working checklist for opening the showroom, holding it through appointments, and closing down. Tap an item to mark it done.</div>
+    </div>
+    <div class="doc-body">
+      <div class="phases">
+
+        <div class="phase">
+          <div class="phase-num">01</div>
+          <div class="phase-name">Set up</div>
+          <div class="phase-sub">Before doors open</div>
+          <ul class="cl">
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Vacuum all rooms</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Sconce lights on — ground floor main lights stay off</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Light incense, placed on the holder in the corner of the entry room</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Start the Spotify playlist at a comfortable volume</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Go over appointments with Divyam — <a class="lnk" href="#" onclick="event.stopPropagation();return false">schedule sheet</a></span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Stock the hospitality station — iced tea prepped and diluted into labelled bottles; fridge stocked with cola, water, milk, ice</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Clean the iPad screen</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Walk the floor — displays straight, nothing left from the previous day</span></li>
+          </ul>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">02</div>
+          <div class="phase-name">During the day</div>
+          <div class="phase-sub">Between appointments</div>
+          <ul class="cl">
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Pick up and return empty glasses after each appointment</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Dust if needed</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Lint roll garments if needed</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Keep the iPad screen clean throughout the day</span></li>
+          </ul>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">03</div>
+          <div class="phase-name">Pack down</div>
+          <div class="phase-sub">After doors close</div>
+          <ul class="cl">
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Unplug the lights</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Charge the iPad</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Wash all remaining bowls and plates, keep dry for the next day</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Check the fridge — top up water, ice, etc. as needed</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Extinguish incense fully</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Final walkthrough — displays tidy, storage room closed</span></li>
+            <li onclick="tick(this)"><span class="box"></span><span class="cl-t">Lock up / set alarm</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div><!-- /page-sop -->
+
+<!-- ============================================================ -->
+<!-- PAGE: HOSPITALITY -->
+<!-- ============================================================ -->
+<div class="page doc" id="page-hosp">
+  <div class="doc-inner">
+    <div class="doc-rail">
+      <div class="doc-rk">Service</div>
+      <div class="doc-rt">Hospitality</div>
+      <div class="doc-ri">Drinks and a small bite offered to buyers during appointments. Unhurried, consistent, quietly made. Ratios are being finalised — placeholders marked below.</div>
+    </div>
+    <div class="doc-body">
+
+      <div class="hsec first">Drinks</div>
+      <div class="drinks">
+
+        <div class="drink">
+          <div class="drink-name">Craft Cola</div>
+          <div class="drink-method">One part cola, one part sparkling water over ice. Finish with a single lemon slice.</div>
+          <span class="tbd">Ratio TBD</span>
+        </div>
+
+        <div class="drink">
+          <div class="drink-name">Iced Tea</div>
+          <div class="drink-method">Prepped in advance and diluted into labelled bottles. Serve over ice.</div>
+          <span class="tbd">Dilution TBD</span>
+        </div>
+
+        <div class="drink">
+          <div class="drink-name">Coffee</div>
+          <div class="drink-method">Over ice. Add the concentrate first, taking care not to splash the sides of the glass. Stir with a spoon.</div>
+          <div class="drink-var"><b>Black</b>top with cold water.</div>
+          <div class="drink-var"><b>Milk</b>top with cold milk.</div>
+        </div>
+
+      </div>
+
+      <div class="hsec">Snacks</div>
+      <div class="snack">
+        <div class="drink-name">Snack bowl</div>
+        <div class="drink-sub">Made to order</div>
+        <div class="drink-method">Arrange five crackers around the bowl and fill the empty space with a handful of banana chips.</div>
+        <div class="allergen">
+          <span class="allergen-tag">Allergen</span>
+          <span>Crackers contain sesame seeds — mention to guests before serving.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /page-hosp -->
 
 <div id="fixture-tip">
   <div id="fixture-tip-title"></div>
@@ -494,6 +663,17 @@ function sf(f){
   document.getElementById('ii').style.display='';
   document.getElementById('ia').classList.remove('on');
 }
+
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('page-'+name).classList.add('on');
+  document.querySelectorAll('.hmenu a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('nav-'+name).classList.add('active');
+  document.getElementById('floorNav').style.display=(name==='guide')?'flex':'none';
+  window.scrollTo(0,0);
+}
+
+function tick(el){el.classList.toggle('done');}
 
 function showFixture(e, title, body) {
   const tip = document.getElementById('fixture-tip');
